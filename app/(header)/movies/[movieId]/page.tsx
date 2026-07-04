@@ -80,6 +80,13 @@ export async function generateMetadata({ params }: Props) {
       title: movie.Title,
       description: movie.Plot,
       images: movie.Poster
+    },
+    twitter: {
+      type: 'website',
+      siteName: 'Next.js 연습 프로젝트',
+      title: movie.Title,
+      description: movie.Plot,
+      images: movie.Poster
     }
   }
 }
