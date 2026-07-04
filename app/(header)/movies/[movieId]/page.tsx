@@ -37,22 +37,39 @@ export interface Rating {
   Value: string
 }
 
+export const metadata = {
+  title: '영화 상세 정보',
+  description: '영화 상세 정보의 설명',
+  openGraph: {
+    type: 'website',
+    siteName: 'Next.js 연습 프로젝트',
+    title: '영화 상세 정보',
+    description: '영화 상세 정보의 설명',
+    images: 'https://picsum.photos/700/500'
+  }
+}
+
 // http://localhost:3000/movies/tt123455123
 export default async function MovieDetails({ params }: Props) {
   const { movieId } = await params
   const { data: movie } = await axios.get<Movie>(
     `https://omdbapi.com?apikey=${process.env.OMDB_APIKEY}&i=${movieId}`
   )
+
   return (
     <>
-      <h1>{movie.Title}</h1>
-      <p>{movie.Plot}</p>
-      <Image
-        src={movie.Poster}
-        alt={movie.Title}
-        width={500}
-        height={750}
-      />
+      {movie && (
+        <>
+          <h1>{movie.Title}</h1>
+          <p>{movie.Plot}</p>
+          <Image
+            src={movie.Poster}
+            alt={movie.Title}
+            width={500}
+            height={750}
+          />
+        </>
+      )}
     </>
   )
 }
