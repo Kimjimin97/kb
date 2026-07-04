@@ -37,6 +37,7 @@ export interface Rating {
   Value: string
 }
 
+// http://localhost:3000/movies/tt123455123
 export default async function MovieDetails({ params }: Props) {
   const { movieId } = await params
   const { data: movie } = await axios.get<Movie>(
